@@ -300,6 +300,7 @@ function readPromo() {
 	font-size: 1.05em;
 	overflow: clip;
 	contain: content;
+	container-type: inline-size;
 
 	// これらの指定はパフォーマンス向上には有効だが、ノートの高さは一定でないため、
 	// 下の方までスクロールすると上のノートの高さがここで決め打ちされたものに変化し、表示しているノートの位置が変わってしまう
@@ -575,7 +576,7 @@ function readPromo() {
 		border-top: solid 0.5px var(--divider);
 	}
 
-	&.max-width_500px {
+	@container (max-width: 500px) {
 		font-size: 0.9em;
 
 		> .article {
@@ -586,7 +587,7 @@ function readPromo() {
 		}
 	}
 
-	&.max-width_450px {
+	@container (max-width: 450px) {
 		> .renote {
 			padding: 8px 16px 0 16px;
 		}
@@ -607,7 +608,7 @@ function readPromo() {
 		}
 	}
 
-	&.max-width_350px {
+	@container (max-width: 350px) {
 		> .article {
 			> .main {
 				> .footer {
@@ -621,7 +622,7 @@ function readPromo() {
 		}
 	}
 
-	&.max-width_300px {
+	@container (max-width: 300px) {
 		> .article {
 			> .avatar {
 				width: 44px;
