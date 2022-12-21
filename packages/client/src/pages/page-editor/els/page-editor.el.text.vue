@@ -24,7 +24,7 @@ const emit = defineEmits<{
 
 const text = $ref(props.modelValue.text ?? '');
 
-watch(text, () => {
+watch($$(text), () => {
 	emit('update:modelValue', {
 		...props.modelValue,
 		text,

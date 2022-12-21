@@ -1,5 +1,5 @@
 <template>
-<Sortable :list="modelValue" tag="div" item-key="id" :options="{ handle: '.drag-handle', group: { name: 'blocks' }, animation: 150, swapThreshold: 0.5 }">
+<Sortable :list="modelValue" tag="div" item-key="id" :options="{ handle: '.drag-handle', group: { name: 'blocks' }, animation: 150, swapThreshold: 0.5 }" @end="onSorted">
 	<template #item="{element}">
 		<component :is="'x-' + element.type" :model-value="element" @update:modelValue="updateItem" @remove="() => removeItem(element)"/>
 	</template>

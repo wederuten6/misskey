@@ -24,6 +24,7 @@ import { v4 as uuid } from 'uuid';
 import XContainer from '../page-editor.container.vue';
 import * as os from '@/os';
 import { i18n } from '@/i18n';
+import { deepClone } from '@/scripts/clone';
 
 const XBlocks = defineAsyncComponent(() => import('../page-editor.blocks.vue'));
 
@@ -37,13 +38,15 @@ const emit = defineEmits<{
 	(ev: 'update:modelValue', value: any): void;
 }>();
 
-const children = $ref(props.modelValue.children ?? []);
+const children = $ref(deepClone(props.modelValue.children ?? []));
 
-watch(children, () => {
+watch($$(children), () => {
 	emit('update:modelValue', {
 		...props.modelValue,
 		children,
 	});
+}, {
+	deep: true,
 });
 
 const getPageBlockList = inject<(any) => any>('getPageBlockList');
