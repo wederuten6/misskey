@@ -1,5 +1,5 @@
 <template>
-<Sortable :list="modelValue" tag="div" item-key="id" :options="{ handle: '.drag-handle', group: { name: 'blocks' }, animation: 150, swapThreshold: 0.5 }" @end="onSorted">
+<Sortable :model-value="modelValue" tag="div" item-key="id" handle=".drag-handle" :group="{ name: 'blocks' }" :animation="150" :swap-threshold="0.5" @update:modelValue="v => $emit('update:modelValue', v)">
 	<template #item="{element}">
 		<component :is="'x-' + element.type" :model-value="element" @update:modelValue="updateItem" @remove="() => removeItem(element)"/>
 	</template>
@@ -31,13 +31,6 @@ export default defineComponent({
 	emits: ['update:modelValue'],
 
 	methods: {
-		onSorted(event) {
-			const items = deepClone(this.modelValue);
-			const item = items.splice(event.oldIndex, 1)[0];
-			items.splice(event.newIndex, 0, item);
-			this.$emit('update:modelValue', items);
-		},
-
 		updateItem(v) {
 			const i = this.modelValue.findIndex(x => x.id === v.id);
 			const newValue = [
