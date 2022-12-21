@@ -113,7 +113,7 @@ function getSaveOptions() {
 		name: name.trim(),
 		summary: summary,
 		font: font,
-		script: null,
+		script: '',
 		hideTitleWhenPinned: hideTitleWhenPinned,
 		alignCenter: alignCenter,
 		content: content,
