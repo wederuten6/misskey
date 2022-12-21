@@ -17,7 +17,7 @@ import { deepClone } from '@/scripts/clone';
 
 export default defineComponent({
 	components: {
-		Sortable: defineAsyncComponent(() => import('sortablejs-vue3').then(x => x.Sortable)),
+		Sortable: defineAsyncComponent(() => import('vuedraggable').then(x => x.default)),
 		XSection, XText, XImage, XNote,
 	},
 
