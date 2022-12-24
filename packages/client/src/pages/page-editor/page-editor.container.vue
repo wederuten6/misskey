@@ -88,10 +88,6 @@ export default defineComponent({
 		border: solid 2px #f00;
 	}
 
-	& + .cpjygsrt {
-		margin-top: 16px;
-	}
-
 	> header {
 		> .title {
 			z-index: 1;
