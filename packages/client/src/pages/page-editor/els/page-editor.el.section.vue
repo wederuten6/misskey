@@ -6,13 +6,11 @@
 		<button class="_button" @click="rename()">
 			<i class="ti ti-pencil"></i>
 		</button>
-		<button class="_button" @click="add()">
-			<i class="ti ti-plus"></i>
-		</button>
 	</template>
 
 	<section class="ilrvjyvi">
 		<XBlocks v-model="children" class="children"/>
+		<MkButton rounded class="add" @click="add()"><i class="ti ti-plus"></i></MkButton>
 	</section>
 </XContainer>
 </template>
@@ -25,6 +23,7 @@ import XContainer from '../page-editor.container.vue';
 import * as os from '@/os';
 import { i18n } from '@/i18n';
 import { deepClone } from '@/scripts/clone';
+import MkButton from '@/components/MkButton.vue';
 
 const XBlocks = defineAsyncComponent(() => import('../page-editor.blocks.vue'));
 
@@ -85,6 +84,10 @@ onMounted(() => {
 .ilrvjyvi {
 	> .children {
 		padding: 16px;
+	}
+
+	> .add {
+		margin: 0 auto 16px auto;
 	}
 }
 </style>

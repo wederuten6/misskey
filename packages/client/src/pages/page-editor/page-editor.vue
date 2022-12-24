@@ -45,10 +45,10 @@
 		</div>
 
 		<div v-else-if="tab === 'contents'">
-			<div>
+			<div :class="$style.contents">
 				<XBlocks v-model="content" class="content"/>
 
-				<MkButton v-if="!readonly" @click="add()"><i class="ti ti-plus"></i></MkButton>
+				<MkButton v-if="!readonly" rounded class="add" @click="add()"><i class="ti ti-plus"></i></MkButton>
 			</div>
 		</div>
 	</MkSpacer>
@@ -293,8 +293,20 @@ definePageMetadata(computed(() => {
 }));
 </script>
 
+<style lang="scss" module>
+.contents {
+	&:global {
+		> .add {
+			margin: 16px auto 0 auto;
+		}
+	}
+}
+</style>
+
 <style lang="scss" scoped>
 .jqqmcavi {
+	margin-bottom: 16px;
+
 	> .button {
 		& + .button {
 			margin-left: 8px;
