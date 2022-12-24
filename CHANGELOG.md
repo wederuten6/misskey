@@ -25,10 +25,14 @@ You should also include the user name that made the change.
 - Add Cloudflare Turnstile CAPTCHA support @CyberRex0
 - Server: improve syslog performance @syuilo
 - Server: improve note scoring for featured notes @CyberRex0
+- Server: delete outdated notifications regularly to improve db performance @syuilo
+- Server: delete outdated hard-mutes regularly to improve db performance @syuilo
+- Server: delete outdated notes of antenna regularly to improve db performance @syuilo
 - Client: use tabler-icons instead of fontawesome to better design @syuilo
 - Client: Add new gabber kick sounds (thanks for noizenecio)
 - Client: Compress non-animated PNG files @saschanaz
 - Client: Youtube window player @sim1222
+- Client: enhance dashboard of control panel @syuilo
 
 ### Bugfixes
 - Server: 引用内の文章がnyaizeされてしまう問題を修正 @kabo2468
@@ -38,6 +42,7 @@ You should also include the user name that made the change.
 - Client: InAppウィンドウが操作できなくなることがあるのを修正 @tamaina
 - Client: use proxied image for instance icon @syuilo
 - Client: Webhookの編集画面で、内容を保存することができない問題を修正 @m-hayabusa
+- Client: update emoji picker immediately on all input @saschanaz
 
 ## 12.119.1 (2022/12/03)
 ### Bugfixes

@@ -1,6 +1,6 @@
 <template>
 <div v-show="props.modelValue.length != 0" class="skeikyzd">
-	<Sortable :model-value="props.modelValue" class="files" item-key="id" :animation="150" :delay="100" :delay-on-touch-only="true" @update:modelValue="v => emit('update:modelValue', v)">
+	<Sortable :model-value="props.modelValue" class="files" item-key="id" :animation="150" :delay="100" :delay-on-touch-only="true" @update:model-value="v => emit('update:modelValue', v)">
 		<template #item="{element}">
 			<div class="file" @click="showFileMenu(element, $event)" @contextmenu.prevent="showFileMenu(element, $event)">
 				<MkDriveFileThumbnail :data-id="element.id" class="thumbnail" :file="element" fit="cover"/>
@@ -70,17 +70,12 @@ async function rename(file) {
 }
 
 async function describe(file) {
-	os.popup(defineAsyncComponent(() => import('@/components/MkMediaCaption.vue')), {
-		title: i18n.ts.describeFile,
-		input: {
-			placeholder: i18n.ts.inputNewDescription,
-			default: file.comment !== null ? file.comment : '',
-		},
-		image: file,
+	os.popup(defineAsyncComponent(() => import('@/components/MkFileCaptionEditWindow.vue')), {
+		default: file.comment !== null ? file.comment : '',
+		file: file,
 	}, {
-		done: result => {
-			if (!result || result.canceled) return;
-			let comment = result.result.length === 0 ? null : result.result;
+		done: caption => {
+			let comment = caption.length === 0 ? null : caption;
 			os.api('drive/files/update', {
 				fileId: file.id,
 				comment: comment,
@@ -103,7 +98,7 @@ function showFileMenu(file, ev: MouseEvent) {
 		action: () => { toggleSensitive(file); },
 	}, {
 		text: i18n.ts.describeFile,
-		icon: 'ti ti-forms',
+		icon: 'ti ti-text-caption',
 		action: () => { describe(file); },
 	}, {
 		text: i18n.ts.attachCancel,
