@@ -83,11 +83,15 @@ onMounted(() => {
 <style lang="scss" scoped>
 .ilrvjyvi {
 	> .children {
-		padding: 16px;
+		margin: 16px;
+
+		&:empty {
+			display: none;
+		}
 	}
 
 	> .add {
-		margin: 0 auto 16px auto;
+		margin: 16px auto;
 	}
 }
 </style>
